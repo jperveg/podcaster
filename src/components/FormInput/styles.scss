@@ -1,0 +1,28 @@
+@import '../../App.scss';
+
+.form-input {
+  height: 2rem;
+  border: none;
+  width: 100%;
+  font-size: 0.8rem;
+  color: #080808;
+  border-radius: .5rem;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+  &-label {
+    margin: 0.2rem 0;
+  }
+  &-container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0;
+    border-width: 0.1rem;
+    border-color: $gray;
+    border-style: solid;
+    border-radius: 0.3rem;
+  }
+}
