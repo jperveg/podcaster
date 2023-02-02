@@ -1,5 +1,6 @@
 import { PodcastDetailProps } from './types'
 import './style.scss'
+import { Outlet } from 'react-router-dom'
 
 export const PodcastDetailView = ({
   author,
@@ -22,7 +23,9 @@ export const PodcastDetailView = ({
           <p>{summary}</p>
         </div>
       </div>
-      <div className="app-podcast-detail-content"></div>
+      <div className="app-podcast-detail-content">
+        <Outlet />
+      </div>
     </div>
   )
 }

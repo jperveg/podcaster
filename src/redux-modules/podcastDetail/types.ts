@@ -14,9 +14,11 @@ export interface EpisodeProps {
   id: string
   title: string
   description: string
-  player: string
+  player: string | null
   pubDate: string
   duration: number
+  durationString?: string
+  link: string
 }
 export interface PodcastDetailsProps extends IPodcast {
   episodes: Array<EpisodeProps>

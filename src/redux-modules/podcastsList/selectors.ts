@@ -3,7 +3,7 @@ import { AppState } from '../../store/rootReducer'
 
 const getIsLoading = (state: AppState) => state.podcasts.isLoading
 
-const getPodcasts = (state: AppState) => state.podcasts.podcasts
+export const getPodcasts = (state: AppState) => state.podcasts.podcasts
 
 const getError = (state: AppState) => state.podcasts.error
 

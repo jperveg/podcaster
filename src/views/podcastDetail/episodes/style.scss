@@ -1,0 +1,58 @@
+@import "../../../App.scss";
+
+.app-podcasts-episodes {
+  &-container {
+    @include col-centered;
+    gap: 2.5rem;
+    box-sizing: border-box;
+  }
+  &-header {
+    @include box-shadow-podcaster; 
+    height: 3rem;   
+    width: 100%;
+    padding: 0.7rem; 
+    display: flex;
+    align-items: center;
+  }
+  &-list {
+    flex: 1;
+    @include box-shadow-podcaster; 
+    width: 100%;
+    padding: 2.3rem 0.7rem;
+    table {
+      width: 100%;
+      font-size: 0.8rem;
+      border-spacing: 0;
+    }
+    th {
+      text-align: left;
+      &:last-child {
+        text-align: right;
+      }
+      &:first-child {
+        padding-left: 0.4rem;
+      }
+    }
+    tr {
+      height: 2rem;
+      &:nth-child(even) {
+        background-color: $gray-light;
+      }
+      &:hover {
+        cursor: pointer;  
+        opacity: 0.8;
+      }
+      td {
+       border-top: 1px solid $gray;
+      }
+    }
+    &-duration { 
+      text-align: right;
+      padding-right:.4rem;
+    }
+    &-title {
+      color: $blue;
+      padding-left: 0.7rem;
+    }
+  }
+}
