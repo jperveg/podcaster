@@ -1,1 +1,2 @@
-export * from './poadcastList'
+export * from './podcastList'
+export * from './podcastDetail'

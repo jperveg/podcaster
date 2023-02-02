@@ -29,7 +29,8 @@ export const usePodcastList = () => {
 
   useEffect(() => {
     dispatch(fetchPodcastsListRequest())
-  }, [dispatch])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleClickPodcast = (podcastId: string) => {
     navigate(`/podcast/${podcastId}`)

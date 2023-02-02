@@ -1,26 +1,28 @@
 import './App.scss'
 import { Provider as ReduxProvider } from 'react-redux'
 import store from './store'
-import { Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes } from 'react-router-dom'
 import { Loading } from './components'
-import { PodcastList } from './views'
+import { PodcastDetail, PodcastList } from './views'
 
 function App() {
   return (
     <ReduxProvider store={store}>
       <div className="app">
         <header className="app-header">
-          <p>{'Podcaster'}</p>
+          <Link to="/">{'Podcaster'}</Link>
           <Loading />
         </header>
       </div>
       <Routes>
         <Route path="/" element={<PodcastList />} />
-        {/* <Route path="/podcast/:podcastId" element={<AddSubmission />} />
+        <Route path="/podcast/:podcastId" element={<PodcastDetail />}>
+          {/* <Route index element={<EpisodesList />} />
         <Route
-          path="/podcast/:podcastId/episode/:episodeId"
-          element={<ListSubmission />}
+          path="episode/:episodeId"
+          element={<PodcastEpisode />}
         /> */}
+        </Route>
       </Routes>
     </ReduxProvider>
   )

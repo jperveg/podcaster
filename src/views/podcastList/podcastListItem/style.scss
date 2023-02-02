@@ -1,0 +1,35 @@
+@import "../../../App.scss";
+
+.app-podcast-list-podcast-list-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 240px;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.5s ease-in-out;
+  }
+  img {
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    top: 23px;
+    margin: 0 auto;
+    position: relative;
+  }
+  &-text {
+    h3 {
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    p {
+      color: $gray-dark;
+      font-size: .9rem;
+      text-align: center;
+    }
+    box-shadow: 0px 6px 5px 0px $shadow;
+    padding: .5rem;
+    @include col-centered;
+  }
+}

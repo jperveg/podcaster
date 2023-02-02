@@ -16,17 +16,17 @@ function* fetchPodcastsSaga() {
         podcasts: allPodcasts,
       })
     )
-  } catch (e: any) {
-    yield put(
-      fetchPodcastsListFailure({
-        error: e?.message as string,
-      })
-    )
+  } catch (e) {
+    if (e instanceof Error) {
+      yield put(
+        fetchPodcastsListFailure({
+          error: e?.message as string,
+        })
+      )
+    }
   }
 }
 
-function* podcastsSaga() {
+export function* podcastsSaga() {
   yield all([takeLatest(FETCH_PODCASTS_LIST_REQUEST, fetchPodcastsSaga)])
 }
-
-export default podcastsSaga

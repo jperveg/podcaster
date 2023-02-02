@@ -9,7 +9,7 @@ export const normalizePodcasts = (
       id: podcast.id.attributes['im:id'],
       author: podcast['im:artist'].label,
       summary: podcast.summary.label,
-      image: podcast['im:image'][0].label,
+      image: podcast['im:image'][2].label,
       title: podcast.title.label,
       link: podcast.link.attributes.href,
       releaseDate: podcast['im:releaseDate'].label,

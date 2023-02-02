@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
-import podcastsSaga from '../redux-modules/podcastsList/sagas'
+import { podcastDetailsSaga, podcastsSaga } from '../redux-modules'
 
 export function* rootSaga() {
-  yield all([fork(podcastsSaga)])
+  yield all([fork(podcastsSaga), fork(podcastDetailsSaga)])
 }

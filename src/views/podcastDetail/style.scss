@@ -1,0 +1,53 @@
+@import "../../App.scss";
+
+@mixin border-bottom-sidebar {
+  border-bottom: 1px solid $gray;
+} 
+
+.app-podcast-detail {
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 3rem;
+    gap: 5rem;
+  }
+  &-sidebar {
+    @include box-shadow-podcaster;
+    &-image {
+      @include col-centered;
+      @include border-bottom-sidebar;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid $gray;
+      width: 100%;
+      img {
+        border-radius: 0.5rem;
+      }
+    }
+    &-author {
+      @include border-bottom-sidebar;
+      p {
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+    }
+    &-description {
+      p {
+        font-style: italic;
+        font-size: 0.9rem;
+      }
+    }
+    padding: 2rem;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    width: 230px;
+    &:hover {
+      cursor: pointer;
+    }   
+  }
+  &-content {
+    flex: 1;
+    @include box-shadow-podcaster;
+  }
+}
