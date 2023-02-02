@@ -17,8 +17,6 @@ export const PodcastListView: IPodcastList = () => {
 
   const podcastList = isFiltered ? filteredPodcasts : podcasts
 
-  if (isLoading) return <Loading />
-
   return (
     <div className="app-podcast-list-container">
       <div className="app-podcast-list-container-header">
@@ -35,18 +33,25 @@ export const PodcastListView: IPodcastList = () => {
           />
         </div>
       </div>
+
       <div className="app-podcast-list-container-body">
-        {podcastList?.map((podcast) => (
-          // <p key={podcast.id}>{podcast.author}</p>
-          <PodcastListItem
-            key={podcast.id}
-            author={podcast.author}
-            image={podcast.image}
-            title={podcast.title}
-            id={podcast.id}
-            handleClickPodcast={handleClickPodcast}
-          />
-        ))}
+        {isLoading ? (
+          <div className="app-podcast-list-container-body-loading">
+            <Loading />
+          </div>
+        ) : (
+          podcastList?.map((podcast) => (
+            // <p key={podcast.id}>{podcast.author}</p>
+            <PodcastListItem
+              key={podcast.id}
+              author={podcast.author}
+              image={podcast.image}
+              title={podcast.title}
+              id={podcast.id}
+              handleClickPodcast={handleClickPodcast}
+            />
+          ))
+        )}
       </div>
     </div>
   )

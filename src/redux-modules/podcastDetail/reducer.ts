@@ -36,8 +36,6 @@ export const podcastDetailsReducer = (
         error: action.payload.error,
       }
     default:
-      return {
-        ...state,
-      }
+      return state
   }
 }
