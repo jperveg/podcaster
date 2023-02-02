@@ -7,14 +7,21 @@ export const PodcastDetailView = ({
   summary,
   image,
   title,
+  handleClickSideBar,
 }: PodcastDetailProps) => {
   return (
     <div className="app-podcast-detail-container">
       <div className="app-podcast-detail-sidebar">
-        <div className="app-podcast-detail-sidebar-image">
+        <div
+          className="app-podcast-detail-sidebar-image"
+          onClick={handleClickSideBar}
+        >
           <img src={image} alt={title} />
         </div>
-        <div className="app-podcast-detail-sidebar-author">
+        <div
+          className="app-podcast-detail-sidebar-author"
+          onClick={handleClickSideBar}
+        >
           <h4>{`${title}`}</h4>
           <p>{`by ${author}`}</p>
         </div>

@@ -20,8 +20,23 @@ export const useEpisodeList = (podcastId: string) => {
   const episodes = details[podcastId]?.episodes || []
 
   const handleClickEpisode = (episodeId: string) => {
-    navigate(`/episdode/${episodeId}`)
+    navigate(`episode/${episodeId}`)
   }
 
   return { episodes: normalizeEpisodes(episodes), handleClickEpisode }
+}
+
+export const useEpisode = ({
+  episodeId,
+  podcastId,
+}: {
+  episodeId: string
+  podcastId: string
+}) => {
+  const details = useSelector(getPodcastDetailSelector)
+  const episodes = details[podcastId]?.episodes || []
+  const episode = episodes.find(
+    (episode: EpisodeProps) => episode.id === episodeId
+  )
+  return { ...episode }
 }

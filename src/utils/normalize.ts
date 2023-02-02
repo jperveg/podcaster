@@ -17,6 +17,17 @@ export const normalizePodcasts = (
   })
 }
 
+const convertDateToSeconds = (dateString: string): number => {
+  if (!dateString.includes(':')) return parseInt(dateString)
+  const dateSplitted = dateString.split(':')
+  const dateStringHHmmss =
+    dateSplitted.length === 2 ? ['0', ...dateSplitted] : dateSplitted
+  const [hours, minutes, seconds] = dateStringHHmmss
+  const numberSOfseconds =
+    parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds)
+  return numberSOfseconds
+}
+
 export const convertRssStringToEpisodes = (rssString: string) => {
   if (!rssString) return []
   const feed = new window.DOMParser().parseFromString(rssString, 'text/xml')
@@ -28,8 +39,10 @@ export const convertRssStringToEpisodes = (rssString: string) => {
     description: el.querySelector('description')?.innerHTML ?? '',
     id: el.querySelector('guid')?.innerHTML ?? '',
     pubDate: el.querySelector('pubDate')?.innerHTML ?? '',
-    duration: parseInt(el.querySelector('duration')?.innerHTML ?? '0', 10),
-    player: el.querySelector('content')?.getAttribute('url') ?? '',
+    duration: convertDateToSeconds(
+      el.querySelector('duration')?.innerHTML ?? '0'
+    ),
+    player: el.querySelector('enclosure')?.getAttribute('url') ?? '',
   }))
   return episodes
 }

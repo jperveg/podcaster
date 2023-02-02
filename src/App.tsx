@@ -4,7 +4,8 @@ import store from './store'
 import { Link, Route, Routes } from 'react-router-dom'
 import { Loading } from './components'
 import { PodcastDetail, PodcastList } from './views'
-import { EpisodesList } from './views/podcastDetail/episodes'
+import { EpisodesList } from './views/podcastDetail/episodesList'
+import { Episode } from './views/podcastDetail/episode'
 
 function App() {
   return (
@@ -19,10 +20,7 @@ function App() {
         <Route path="/" element={<PodcastList />} />
         <Route path="/podcast/:podcastId" element={<PodcastDetail />}>
           <Route index element={<EpisodesList />} />
-          {/* <Route
-          path="episode/:episodeId"
-          element={<PodcastEpisode />}
-        /> */}
+          <Route path="episode/:episodeId" element={<Episode />} />
         </Route>
       </Routes>
     </ReduxProvider>

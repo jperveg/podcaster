@@ -1,0 +1,27 @@
+@import "../../../App.scss";
+
+.app-podcast-episode {
+  &-container {
+    width: 100%;
+    @include col-centered;
+    padding: 0.7rem;
+    gap: 0.7rem;
+    h3 {
+      text-align: left;
+      width: 100%;
+    }
+    p {
+      flex: 1;
+    }
+    box-sizing: border-box;
+    @include box-shadow-podcaster;
+    audio {
+      width: 100%;
+    }
+    &-description {
+      flex: 1;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+  }
+}
