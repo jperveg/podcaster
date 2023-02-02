@@ -12,7 +12,7 @@ export const usePodcastList = () => {
   const isPodcadListLoading = useSelector(getPodcastsIsLoadingSelector)
   const podcasts = useSelector(getPodcastsSelector)
   const navigate = useNavigate()
-  const [filterText, setFilterText] = useState<string | undefined>()
+  const [filterText, setFilterText] = useState<string>('')
 
   const filteredPodcasts = useMemo(() => {
     if (filterText && filterText !== '' && podcasts) {
