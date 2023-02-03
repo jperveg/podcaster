@@ -37,11 +37,10 @@ export const PodcastListView: IPodcastList = () => {
       <div className="app-podcast-list-container-body">
         {isLoading ? (
           <div className="app-podcast-list-container-body-loading">
-            <Loading />
+            <Loading size={20} />
           </div>
         ) : (
           podcastList?.map((podcast) => (
-            // <p key={podcast.id}>{podcast.author}</p>
             <PodcastListItem
               key={podcast.id}
               author={podcast.author}

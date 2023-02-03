@@ -9,7 +9,7 @@ const components = {
 export const Loading = ({
   color = '#007aca',
   type = LoadingTypes.BEAT,
-  size = 50,
+  size = 40,
 }: LoadingProps) => {
   const Component = components[type]
   return <Component color={color} size={size} />
