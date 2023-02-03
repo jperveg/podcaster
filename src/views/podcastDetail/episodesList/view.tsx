@@ -17,7 +17,7 @@ export const EpisodesListView = ({
             <tr>
               <th>{'Title'}</th>
               <th>{'Date'}</th>
-              <th>{'Duraction'}</th>
+              <th>{'Duration'}</th>
             </tr>
           </thead>
           <tbody>

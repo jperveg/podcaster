@@ -28,15 +28,21 @@ const convertDateToSeconds = (dateString: string): number => {
   return numberSOfseconds
 }
 
+export const removeCDATA = (htmlString: string): string => {
+  return htmlString
+    .trim()
+    .replace(/^(\/\/\s*)?<!\[CDATA\[|(\/\/\s*)?\]\]>$/g, '')
+}
+
 export const convertRssStringToEpisodes = (rssString: string) => {
   if (!rssString) return []
   const feed = new window.DOMParser().parseFromString(rssString, 'text/xml')
   const items = feed.querySelectorAll('item')
   const episodes = Array.from(items).map((el) => ({
     link: el.querySelector('link')?.innerHTML ?? '',
-    title: el.querySelector('title')?.innerHTML ?? '',
+    title: removeCDATA(el.querySelector('title')?.innerHTML ?? ''),
     author: el.querySelector('author')?.innerHTML ?? '',
-    description: el.querySelector('description')?.innerHTML ?? '',
+    description: removeCDATA(el.querySelector('description')?.innerHTML ?? ''),
     id: el.querySelector('guid')?.innerHTML ?? '',
     pubDate: el.querySelector('pubDate')?.innerHTML ?? '',
     duration: convertDateToSeconds(

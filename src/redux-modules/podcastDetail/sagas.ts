@@ -5,7 +5,7 @@ import { FETCH_PODCAST_BY_ID_REQUEST } from '../../store/actionTypes'
 import { convertRssStringToEpisodes } from '../../utils/normalize'
 import { getPodcasts } from '../podcastsList/selectors'
 import { IPodcast } from '../podcastsList/types'
-import { fetchPodcastByIdSuccess } from './actions'
+import { fetchPodcastByIdFailure, fetchPodcastByIdSuccess } from './actions'
 // import { normalizePodcasts } from '../../utils/normalize'
 import { getEpisodesData, getPodcastDetailById } from './api'
 import {
@@ -44,11 +44,11 @@ function* fetchPodcastByIdSaga(action: FetchPodcastByIdRequest) {
     yield put(fetchPodcastByIdSuccess(successPayload))
   } catch (e) {
     if (e instanceof Error) {
-      // yield put(
-      //   fetchPodcastsListFailure({
-      //     error: e?.message as string,
-      //   })
-      // )
+      yield put(
+        fetchPodcastByIdFailure({
+          error: e?.message as string,
+        })
+      )
     }
   }
 }

@@ -1,6 +1,16 @@
-import { BeatLoader } from 'react-spinners'
-import { LoadingProps } from './types'
+import { BeatLoader, BounceLoader } from 'react-spinners'
+import { LoadingProps, LoadingTypes } from './types'
 
-export const Loading = ({ color = '#007aca' }: LoadingProps) => {
-  return <BeatLoader color={color} />
+const components = {
+  beat: BeatLoader,
+  bounce: BounceLoader,
+}
+
+export const Loading = ({
+  color = '#007aca',
+  type = LoadingTypes.BEAT,
+  size = 50,
+}: LoadingProps) => {
+  const Component = components[type]
+  return <Component color={color} size={size} />
 }

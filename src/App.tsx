@@ -2,11 +2,12 @@ import './App.scss'
 import { Provider as ReduxProvider } from 'react-redux'
 import { Link, Route, Routes } from 'react-router-dom'
 import { Loading } from './components'
-import { PodcastDetail, PodcastList } from './views'
+import { GlobalLoading, PodcastDetail, PodcastList } from './views'
 import { EpisodesList } from './views/podcastDetail/episodesList'
 import { Episode } from './views/podcastDetail/episode'
 import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from './store'
+import { GlobalLoadingProvider } from './contexts/globalLoading'
 
 const { store, persistor } = configureStore()
 function App() {
@@ -16,7 +17,9 @@ function App() {
         <div className="app">
           <header className="app-header">
             <Link to="/">{'Podcaster'}</Link>
-            <Loading />
+            <GlobalLoadingProvider>
+              <GlobalLoading />
+            </GlobalLoadingProvider>
           </header>
         </div>
         <Routes>
