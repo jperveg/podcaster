@@ -5,12 +5,14 @@ import {
   fetchPodcastsListRequest,
   getPodcastsIsLoadingSelector,
   getPodcastsSelector,
+  getTimestampSelector,
 } from '../../redux-modules'
 
 export const usePodcastList = () => {
   const dispatch = useDispatch()
   const isPodcadListLoading = useSelector(getPodcastsIsLoadingSelector)
   const podcasts = useSelector(getPodcastsSelector)
+  const timestamp = useSelector(getTimestampSelector) ?? null
   const navigate = useNavigate()
   const [filterText, setFilterText] = useState<string>('')
 
@@ -28,11 +30,15 @@ export const usePodcastList = () => {
   }, [filterText, podcasts])
 
   useEffect(() => {
-    if (!podcasts.length) {
+    const currentTimestamp = new Date().getTime()
+    if (
+      !podcasts?.length ||
+      (podcasts?.length && timestamp && currentTimestamp > timestamp)
+    ) {
       dispatch(fetchPodcastsListRequest())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [podcasts])
+  }, [podcasts, timestamp])
 
   const handleClickPodcast = (podcastId: string) => {
     navigate(`/podcast/${podcastId}`)

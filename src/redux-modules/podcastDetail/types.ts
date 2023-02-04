@@ -22,6 +22,7 @@ export interface EpisodeProps {
 }
 export interface PodcastDetailsProps extends IPodcast {
   episodes: Array<EpisodeProps>
+  timestamp: number | null
 }
 
 export type FetchPodcastByIdSuccessPayload = {

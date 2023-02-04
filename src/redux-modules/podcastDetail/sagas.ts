@@ -2,6 +2,7 @@
 import { all, call, put, select, takeLatest } from 'redux-saga/effects'
 
 import { FETCH_PODCAST_BY_ID_REQUEST } from '../../store/actionTypes'
+import { getTimeTomorrow } from '../../utils/dateUtils'
 import { convertRssStringToEpisodes } from '../../utils/normalize'
 import { getPodcasts } from '../podcastsList/selectors'
 import { IPodcast } from '../podcastsList/types'
@@ -39,6 +40,7 @@ function* fetchPodcastByIdSaga(action: FetchPodcastByIdRequest) {
     successPayload[podcastId] = {
       ...podcast,
       episodes: [...episodes],
+      timestamp: getTimeTomorrow(),
     }
 
     yield put(fetchPodcastByIdSuccess(successPayload))

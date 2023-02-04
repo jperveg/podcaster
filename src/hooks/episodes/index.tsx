@@ -17,7 +17,7 @@ const normalizeEpisodes = (episodes: EpisodeProps[]) => {
 export const useEpisodeList = (podcastId: string) => {
   const details = useSelector(getPodcastDetailSelector)
   const navigate = useNavigate()
-  const episodes = details[podcastId]?.episodes || []
+  const episodes = details?.[podcastId]?.episodes || []
 
   const handleClickEpisode = (episodeId: string) => {
     navigate(`episode/${episodeId}`)
@@ -34,7 +34,7 @@ export const useEpisode = ({
   podcastId: string
 }) => {
   const details = useSelector(getPodcastDetailSelector)
-  const episodes = details[podcastId]?.episodes || []
+  const episodes = details?.[podcastId]?.episodes || []
   const episode = episodes.find(
     (episode: EpisodeProps) => episode.id === episodeId
   )

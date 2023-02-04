@@ -3,6 +3,7 @@ import {
   FETCH_PODCASTS_LIST_SUCCESS,
   FETCH_PODCASTS_LIST_FAILURE,
 } from '../../store/actionTypes'
+import { getTimeTomorrow } from '../../utils/dateUtils'
 
 import { IPodcastsState, PodcastsActions } from './types'
 
@@ -10,6 +11,7 @@ const initialState: IPodcastsState = {
   isLoading: false,
   podcasts: [],
   error: null,
+  timestamp: null,
 }
 
 export const podcastsReducer = (
@@ -21,6 +23,7 @@ export const podcastsReducer = (
       return {
         ...state,
         isLoading: true,
+        timestamp: null,
       }
     case FETCH_PODCASTS_LIST_SUCCESS:
       return {
@@ -28,6 +31,7 @@ export const podcastsReducer = (
         isLoading: false,
         podcasts: action.payload.podcasts,
         error: null,
+        timestamp: getTimeTomorrow(),
       }
     case FETCH_PODCASTS_LIST_FAILURE:
       return {
@@ -35,6 +39,7 @@ export const podcastsReducer = (
         isLoading: false,
         podcasts: [],
         error: action.payload.error,
+        timestamp: null,
       }
     default:
       return state

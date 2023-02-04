@@ -22,5 +22,18 @@ export const getPodcastDetailById = (podcastId: string) => {
 }
 
 export const getEpisodesData = (uriRss: string) => {
-  return fetch(uriRss).then((response) => response.text())
+  return fetch(uriRss, { mode: 'cors' })
+    .then((response) => response.text())
+    .catch(() => {
+      return fetch(
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(`${uriRss}`)}`
+      )
+        .then((response) => {
+          if (response.ok) return response.text()
+          throw new Error('Network response was not ok.')
+        })
+        .then((data) => {
+          return data
+        })
+    })
 }

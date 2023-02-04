@@ -25,6 +25,7 @@ export interface IPodcastsList {
 export interface IPodcastsState extends IPodcastsList {
   isLoading: boolean
   error: string | null
+  timestamp: number | null
 }
 
 export type FetchPodcastsListSuccessPayload = IPodcastsList
