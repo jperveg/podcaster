@@ -18,7 +18,7 @@ function configureStore() {
       expireReducer('podcasts', {
         // (Optional) Key to be used for the time relative to which store is to be expired
         // (Required) Seconds after which store will be expired
-        expireSeconds: 60,
+        expireSeconds: 60 * 60 * 24,
         // (Optional) State to be used for resetting e.g. provide initial reducer state
         expiredState: {},
         // (Optional) Use it if you don't want to manually set the time in the reducer i.e. at `persistedAtKey`
@@ -28,7 +28,7 @@ function configureStore() {
       expireReducer('details', {
         // (Optional) Key to be used for the time relative to which store is to be expired
         // (Required) Seconds after which store will be expired
-        expireSeconds: 60,
+        expireSeconds: 60 * 60 * 24,
         // (Optional) State to be used for resetting e.g. provide initial reducer state
         expiredState: {},
         // (Optional) Use it if you don't want to manually set the time in the reducer i.e. at `persistedAtKey`
