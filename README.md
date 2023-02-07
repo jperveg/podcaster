@@ -20,6 +20,12 @@ Prettier
 
 The purpose of this application is to provide a solution to the problem posed by Zara.com.
 
+Possible improvements:
+
+- Apply [react-virtualized](https://www.npmjs.com/package/react-virtualized) for table and listing. This way there would be less rows loaded in the DOM.
+
+* State handling could be avoided by using context api instead of Redux
+
 ## Step-by-step instructions for operation
 
 1. Run `npm install` to install dependencies and configuration
@@ -53,3 +59,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run lint`
+
+Execute and pass Eslint to the project. If execute, the `npm run lint:fix` command automatically fixes fixable bugs.\

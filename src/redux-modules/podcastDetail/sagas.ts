@@ -7,7 +7,7 @@ import { convertRssStringToEpisodes } from '../../utils/normalize'
 import { getPodcasts } from '../podcastsList/selectors'
 import { IPodcast } from '../podcastsList/types'
 import { fetchPodcastByIdFailure, fetchPodcastByIdSuccess } from './actions'
-// import { normalizePodcasts } from '../../utils/normalize'
+
 import { getEpisodesData, getPodcastDetailById } from './api'
 import {
   EpisodeProps,

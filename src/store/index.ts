@@ -38,7 +38,6 @@ function configureStore() {
   const persistedReducer = persistReducer(persistConfig, rootReducer)
   const sagaMiddleware = createSagaMiddleware()
 
-  // Mount it on the Store
   const store = createStore(
     persistedReducer,
     {},
