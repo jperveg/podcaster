@@ -11,6 +11,7 @@ export const PodcastListItemView = ({
   return (
     <div
       className="app-podcast-list-podcast-list-item"
+      data-testid="podcast-list-item"
       onClick={() => handleClickPodcast(id)}
     >
       <img src={image} alt={title} />

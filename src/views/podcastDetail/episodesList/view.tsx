@@ -11,7 +11,10 @@ export const EpisodesListView = ({
       <div className="app-podcasts-episodes-header">
         <h2>{`Episodes: ${episodes.length}`}</h2>
       </div>
-      <div className="app-podcasts-episodes-list">
+      <div
+        className="app-podcasts-episodes-list"
+        data-testid="podcasts-list-episodes"
+      >
         <table>
           <thead>
             <tr>
@@ -25,6 +28,7 @@ export const EpisodesListView = ({
               <tr
                 key={episode.id}
                 onClick={() => handleClickEpisode(episode.id)}
+                data-testid="podcasts-list-episode-tr"
               >
                 <td className="app-podcasts-episodes-list-title">
                   {episode.title}

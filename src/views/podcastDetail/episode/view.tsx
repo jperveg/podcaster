@@ -3,7 +3,10 @@ import './style.scss'
 
 export const EpisodeView = ({ title, description, player }: EpisodeProps) => {
   return (
-    <div className="app-podcast-episode-container">
+    <div
+      className="app-podcast-episode-container"
+      data-testid="podcast-episode-container"
+    >
       <h3>{title}</h3>
       <div
         dangerouslySetInnerHTML={{ __html: description }}

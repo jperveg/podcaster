@@ -1,20 +1,17 @@
 import { FormInput, Loading } from '../../components'
-import { usePodcastList } from '../../hooks'
 import { PodcastListItem } from './podcastListItem'
 import './style.scss'
 import { IPodcastList } from './types'
 
-export const PodcastListView: IPodcastList = () => {
-  const {
-    filteredPodcasts,
-    isFiltered,
-    podcasts,
-    isLoading,
-    handleChangeSearchInput,
-    handleClickPodcast,
-    filterText,
-  } = usePodcastList()
-
+export const PodcastListView: IPodcastList = ({
+  filteredPodcasts,
+  isFiltered,
+  podcasts,
+  isLoading,
+  handleChangeSearchInput,
+  handleClickPodcast,
+  filterText,
+}) => {
   const podcastList = isFiltered ? filteredPodcasts : podcasts
 
   return (
@@ -36,7 +33,10 @@ export const PodcastListView: IPodcastList = () => {
 
       <div className="app-podcast-list-container-body">
         {isLoading ? (
-          <div className="app-podcast-list-container-body-loading">
+          <div
+            className="app-podcast-list-container-body-loading"
+            data-testid="loading-div"
+          >
             <Loading size={20} />
           </div>
         ) : (

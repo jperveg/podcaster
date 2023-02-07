@@ -2,13 +2,13 @@
 
 const endpoints = {
   get: 'lookup?id=',
+  corsGet: 'https://api.allorigins.win/get?url=',
+  corsRaw: 'https://api.allorigins.win/raw?url=',
 }
 
 export const getPodcastDetailById = (podcastId: string) => {
-  //return getFetcher().get(`${endpoints.get}${podcastId}`)
-
   return fetch(
-    `https://api.allorigins.win/get?url=${encodeURIComponent(
+    `${endpoints.corsGet}${encodeURIComponent(
       `https://itunes.apple.com/${endpoints.get}${podcastId}`
     )}`
   )
@@ -25,9 +25,7 @@ export const getEpisodesData = (uriRss: string) => {
   return fetch(uriRss, { mode: 'cors' })
     .then((response) => response.text())
     .catch(() => {
-      return fetch(
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(`${uriRss}`)}`
-      )
+      return fetch(`${endpoints.corsRaw}${encodeURIComponent(`${uriRss}`)}`)
         .then((response) => {
           if (response.ok) return response.text()
           throw new Error('Network response was not ok.')

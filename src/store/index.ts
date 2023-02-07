@@ -8,6 +8,8 @@ import expireReducer from 'redux-persist-expire'
 import rootReducer from './rootReducer'
 import { rootSaga } from './rootSaga'
 
+const EXPIRED_TIME = 60 * 60 * 24
+
 // Create the saga middleware
 function configureStore() {
   const persistConfig = {
@@ -18,7 +20,7 @@ function configureStore() {
       expireReducer('podcasts', {
         // (Optional) Key to be used for the time relative to which store is to be expired
         // (Required) Seconds after which store will be expired
-        expireSeconds: 60 * 60 * 24,
+        expireSeconds: EXPIRED_TIME,
         // (Optional) State to be used for resetting e.g. provide initial reducer state
         expiredState: {},
         // (Optional) Use it if you don't want to manually set the time in the reducer i.e. at `persistedAtKey`
@@ -26,13 +28,8 @@ function configureStore() {
         autoExpire: true,
       }),
       expireReducer('details', {
-        // (Optional) Key to be used for the time relative to which store is to be expired
-        // (Required) Seconds after which store will be expired
-        expireSeconds: 60 * 60 * 24,
-        // (Optional) State to be used for resetting e.g. provide initial reducer state
+        expireSeconds: EXPIRED_TIME,
         expiredState: {},
-        // (Optional) Use it if you don't want to manually set the time in the reducer i.e. at `persistedAtKey`
-        // and want the store to  be automatically expired if the record is not updated in the `expireSeconds` time
         autoExpire: true,
       }),
     ],

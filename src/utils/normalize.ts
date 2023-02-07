@@ -1,4 +1,5 @@
 import { IPodcast, IPodcastFromITunes } from '../redux-modules'
+// import DOMPurify from 'dompurify'
 
 export const normalizePodcasts = (
   podcastsFromITunes: IPodcastFromITunes[]
@@ -32,6 +33,9 @@ export const removeCDATA = (htmlString: string): string => {
   return htmlString
     .trim()
     .replace(/^(\/\/\s*)?<!\[CDATA\[|(\/\/\s*)?\]\]>$/g, '')
+  // return DOMPurify.sanitize(htmlString, {
+  //   USE_PROFILES: { html: true },
+  // })
 }
 
 export const convertRssStringToEpisodes = (rssString: string) => {
