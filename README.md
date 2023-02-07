@@ -28,6 +28,8 @@ Possible improvements:
 
 ## Step-by-step instructions for operation
 
+The application needs to have node (e.g v18.14.0) and npm (e.g. 9.3.1 ) installed
+
 1. Run `npm install` to install dependencies and configuration
 2. Run `npm start `
 
