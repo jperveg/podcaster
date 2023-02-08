@@ -1,7 +1,6 @@
-import { cleanup, fireEvent, render } from '@testing-library/react'
+import { cleanup, render } from '@testing-library/react'
 import { EpisodeProps } from '../redux-modules'
 import { EpisodeView } from '../views/podcastDetail/episode/view'
-import { EpisodeListViewProps } from '../views/podcastDetail/episodesList/types'
 import { episodesMockup } from './common'
 
 describe('EpisodesListView', () => {
