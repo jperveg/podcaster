@@ -1,15 +1,14 @@
-// import { getFetcher } from '../../utils/fetcher'
-
 const endpoints = {
   get: 'lookup?id=',
   corsGet: 'https://api.allorigins.win/get?url=',
   corsRaw: 'https://api.allorigins.win/raw?url=',
+  baseUrl: 'https://itunes.apple.com/',
 }
 
 export const getPodcastDetailById = (podcastId: string) => {
   return fetch(
     `${endpoints.corsGet}${encodeURIComponent(
-      `https://itunes.apple.com/${endpoints.get}${podcastId}`
+      `${endpoints.baseUrl}${endpoints.get}${podcastId}`
     )}`
   )
     .then((response) => {

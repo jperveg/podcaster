@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 
 import { FETCH_PODCASTS_LIST_REQUEST } from '../../store/actionTypes'
@@ -9,8 +8,8 @@ import { PodcastResponse } from './types'
 
 function* fetchPodcastsSaga() {
   try {
-    const response: AxiosResponse<PodcastResponse> = yield call(getAllPodcasts)
-    const allPodcasts = normalizePodcasts(response.data.feed.entry)
+    const response: PodcastResponse = yield call(getAllPodcasts)
+    const allPodcasts = normalizePodcasts(response.feed.entry)
     yield put(
       fetchPodcastsListSuccess({
         podcasts: allPodcasts,
