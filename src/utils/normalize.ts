@@ -18,7 +18,7 @@ export const normalizePodcasts = (
   })
 }
 
-const convertDateToSeconds = (dateString: string): number => {
+export const convertDateToSeconds = (dateString: string): number => {
   if (!dateString.includes(':')) return parseInt(dateString)
   const dateSplitted = dateString.split(':')
   const dateStringHHmmss =
@@ -43,11 +43,11 @@ export const convertRssStringToEpisodes = (rssString: string) => {
   const feed = new window.DOMParser().parseFromString(rssString, 'text/xml')
   const items = feed.querySelectorAll('item')
   const episodes = Array.from(items).map((el) => ({
-    link: el.querySelector('link')?.innerHTML ?? '',
+    link: removeCDATA(el.querySelector('link')?.innerHTML ?? ''),
     title: removeCDATA(el.querySelector('title')?.innerHTML ?? ''),
     author: el.querySelector('author')?.innerHTML ?? '',
     description: removeCDATA(el.querySelector('description')?.innerHTML ?? ''),
-    id: el.querySelector('guid')?.innerHTML ?? '',
+    id: removeCDATA(el.querySelector('guid')?.innerHTML ?? ''),
     pubDate: el.querySelector('pubDate')?.innerHTML ?? '',
     duration: convertDateToSeconds(
       el.querySelector('duration')?.innerHTML ?? '0'
